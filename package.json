@@ -1,0 +1,218 @@
+{
+  "name": "finger-menu-web",
+  "description": "Finger Menu Web",
+  "version": "0.0.1",
+  "author": {
+    "name": "FingerMenu Ltd",
+    "email": "fingermenu.ltd@gmail.com",
+    "url": "http://www.fingermenu.co.nz"
+  },
+  "private": true,
+  "dependencies": {
+    "@devexpress/dx-react-core": "^1.0.0-beta.1",
+    "@devexpress/dx-react-grid": "^1.0.0-beta.1",
+    "@devexpress/dx-react-grid-material-ui": "^1.0.0-beta.1",
+    "immutable": "^4.0.0-rc.9",
+    "material-ui": "^1.0.0-beta.19",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "micro-business-common-react": "^1.1.0",
+    "micro-business-parse-server-common-web": "^1.1.0",
+    "parse": "^1.11.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-jss": "^8.1.0",
+    "react-redux": "^5.0.6",
+    "react-relay": "1.4.1",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.0",
+    "redux-form-material-ui": "^5.0.0-beta.2",
+    "redux-saga": "^0.16.0",
+    "regenerator-runtime": "^0.11.1",
+    "typeface-roboto": "0.0.45"
+  },
+  "devDependencies": {
+    "autoprefixer": "7.2.2",
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.0.3",
+    "babel-jest": "21.2.0",
+    "babel-loader": "7.1.2",
+    "babel-plugin-relay": "1.4.1",
+    "babel-preset-react-app": "^3.1.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "6.26.0",
+    "case-sensitive-paths-webpack-plugin": "2.1.1",
+    "chalk": "2.3.0",
+    "css-loader": "0.28.7",
+    "dotenv": "4.0.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "eslint": "4.12.1",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "6.0.2",
+    "eslint-plugin-react": "7.5.1",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "1.1.5",
+    "flow-bin": "^0.60.1",
+    "fs-extra": "4.0.3",
+    "html-webpack-plugin": "2.30.1",
+    "husky": "^0.14.3",
+    "jest": "21.2.1",
+    "jest-enzyme": "^4.0.1",
+    "lint-staged": "^6.0.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
+    "object-assign": "^4.1.1",
+    "postcss-flexbugs-fixes": "3.2.0",
+    "postcss-loader": "2.0.9",
+    "prettier": "^1.9.1",
+    "promise": "8.0.1",
+    "raf": "3.4.0",
+    "react-dev-utils": "^4.2.1",
+    "react-test-renderer": "^16.2.0",
+    "relay-compiler": "1.4.1",
+    "source-map-explorer": "^1.5.0",
+    "style-loader": "0.19.0",
+    "sw-precache-webpack-plugin": "0.11.4",
+    "url-loader": "0.6.2",
+    "webpack": "3.10.0",
+    "webpack-dev-server": "2.9.7",
+    "webpack-manifest-plugin": "1.3.2",
+    "whatwg-fetch": "2.0.3"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write --single-quote true --trailing-comma all --print-width 150",
+      "npm run fixlint",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "flow": "flow",
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "start-js": "node scripts/start.js",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "node scripts/build.js",
+    "build": "npm-run-all build-css build-js",
+    "test": "node scripts/test.js --env=jsdom",
+    "relay": "relay-compiler --src ./src --schema data/schema.graphql",
+    "relay:watch": "yarn relay -- --watch",
+    "lint": "eslint src",
+    "fixlint": "eslint --fix --ext .jsx --ext .js src",
+    "precommit": "lint-staged"
+  },
+  "pre-commit": "lint:staged",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org:fingermenu/finger-menu-web.git"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,mjs}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "mjs",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react-app",
+      "stage-0"
+    ],
+    "plugins": [
+      [
+        "relay",
+        {
+          "schema": "data/schema.json"
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "indent": [
+        2,
+        2
+      ],
+      "linebreak-style": [
+        0
+      ],
+      "import/no-unresolved": [
+        2,
+        {
+          "commonjs": true
+        }
+      ],
+      "import/named": 2,
+      "import/default": 2,
+      "import/namespace": 2,
+      "import/export": 2,
+      "react/prefer-stateless-function": 0,
+      "react/jsx-indent": [
+        2,
+        2
+      ],
+      "react/jsx-indent-props": [
+        2,
+        2
+      ],
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "react/no-unused-prop-types": 0,
+      "max-len": [
+        "warn",
+        150
+      ],
+      "no-console": 0,
+      "jsx-a11y/href-no-hash": "off",
+      "jsx-a11y/anchor-is-valid": [
+        "warn",
+        {
+          "aspects": [
+            "invalidHref"
+          ]
+        }
+      ]
+    }
+  }
+}
