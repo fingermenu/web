@@ -24,7 +24,7 @@ class SignUpContainer extends Component {
   };
 
   handleSignUpWithUsernameAndPassword = values => {
-    this.props.userAccessActions.signUpWithUsernameAndPassword(values.email, values.password, values.email, 'storeOwner');
+    this.props.userAccessActions.signUpWithUsernameAndPassword(values.email, values.password, values.email, 'restaurantOwner');
   };
 
   handleCancel = () => {
