@@ -33,18 +33,6 @@ export const signedInStoreMainDrawerListItems = handleSignOut => (
       </ListItemIcon>
       <Link to="/">Home</Link>
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <MyStoresIcon />
-      </ListItemIcon>
-      <Link to="/myStores">My Stores</Link>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <MyProductsIcon />
-      </ListItemIcon>
-      <Link to="/myProducts">My Products</Link>
-    </ListItem>
     <ListItem button onClick={handleSignOut}>
       <ListItemIcon>
         <SignOutIcon />
