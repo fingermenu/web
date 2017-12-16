@@ -1,8 +1,8 @@
 // @flow
 
 import Immutable, { Map } from 'immutable';
-import * as userAccessActions from 'micro-business-parse-server-common-web/dist/userAccess/Actions';
-import { UserAccessStatus } from 'micro-business-parse-server-common-web';
+import * as userAccessActions from 'micro-business-common-react/dist/userAccess/Actions';
+import { UserAccessStatus } from 'micro-business-common-react';
 import { MessageType } from 'micro-business-common-react';
 import * as messageBarActions from 'micro-business-common-react/dist/messageBar/Actions';
 import React, { Component } from 'react';
@@ -18,8 +18,6 @@ import withRoot from './sharedComponents/withRoot';
 import { ShellContainer } from './sharedComponents/shell';
 import { SignInContainer, SignUpContainer } from './app/auth';
 import { HomeContainer } from './app/home';
-import { Stores, NewStoreContainer } from './app/stores';
-import { Products } from './app/products';
 import Styles from './Styles';
 import './App.css';
 
@@ -79,9 +77,6 @@ class App extends Component {
           <Route path="/signin" component={SignInContainer} exact />
           <Route path="/signup" component={SignUpContainer} exact />
           <Route path="/" exact render={props => <ShellContainer {...props} shellContent={<HomeContainer />} />} />
-          <Route path="/myStores" exact render={props => <ShellContainer {...props} shellContent={<Stores />} />} />
-          <Route path="/myProducts" exact render={props => <ShellContainer {...props} shellContent={<Products />} />} />
-          <Route path="/newStore" exact render={props => <ShellContainer {...props} shellContent={<NewStoreContainer />} />} />
           <Snackbar
             open={snackbar.open}
             onRequestClose={this.handleRequestCloseSnackbar}

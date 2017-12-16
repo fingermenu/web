@@ -12,7 +12,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-class TrolleySmartRoot extends Component {
+class FingerMenuRoot extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -25,5 +25,5 @@ class TrolleySmartRoot extends Component {
     </Provider>
   );
 }
-ReactDOM.render(<TrolleySmartRoot />, document.getElementById('root'));
+ReactDOM.render(<FingerMenuRoot />, document.getElementById('root'));
 registerServiceWorker();
