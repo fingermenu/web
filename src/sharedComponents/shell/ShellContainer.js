@@ -27,7 +27,7 @@ class ShellContainer extends Component {
     <div>
       <ResponsiveDrawerContainer
         drawerListItems={this.props.userExists ? signedInStoreMainDrawerListItems(this.handleSignOut) : notSignedInStoreMainDrawerListItems}
-        appBarTitle="Trolley Smart"
+        appBarTitle="Finger Menu"
       >
         {this.props.signOutStatus === UserAccessStatus.IN_PROGRESS && <Loading />}
         {this.props.shellContent}
