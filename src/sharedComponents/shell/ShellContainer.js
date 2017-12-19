@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { translate } from 'react-i18next';
 import { ResponsiveDrawerContainer } from '../responsiveDrawer';
 import { notSignedInStoreMainDrawerListItems, signedInStoreMainDrawerListItems } from '../../app/navigation';
 import Loading from '../loading';
@@ -26,7 +27,11 @@ class ShellContainer extends Component {
   render = () => (
     <div>
       <ResponsiveDrawerContainer
-        drawerListItems={this.props.userExists ? signedInStoreMainDrawerListItems(this.handleSignOut) : notSignedInStoreMainDrawerListItems}
+        drawerListItems={
+          this.props.userExists
+            ? signedInStoreMainDrawerListItems(this.props.t, this.handleSignOut)
+            : notSignedInStoreMainDrawerListItems(this.props.t)
+        }
         appBarTitle="Finger Menu"
       >
         {this.props.signOutStatus === UserAccessStatus.IN_PROGRESS && <Loading />}
@@ -58,4 +63,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ShellContainer));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(translate()(ShellContainer)));
