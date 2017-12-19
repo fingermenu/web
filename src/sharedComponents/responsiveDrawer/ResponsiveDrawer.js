@@ -14,6 +14,7 @@ import Divider from 'material-ui/Divider';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import MenuIcon from 'material-ui-icons/Menu';
 import LanguageIcon from 'material-ui-icons/Language';
+import { translate } from 'react-i18next';
 import Styles from './Styles';
 
 const getDrawer = (classes, drawerListItems) => (
@@ -42,7 +43,7 @@ class ResponsiveDrawer extends Component {
   };
 
   render = () => {
-    const { classes, theme, mobileOpen, handleDrawerToggle, drawerListItems, appBarTitle, children } = this.props;
+    const { classes, theme, mobileOpen, handleDrawerToggle, drawerListItems, appBarTitle, children, t } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
@@ -75,8 +76,8 @@ class ResponsiveDrawer extends Component {
                   open={open}
                   onClose={this.handleLanguagesClose}
                 >
-                  <MenuItem onClick={() => this.handleLanguagesClose('en')}>English</MenuItem>
-                  <MenuItem onClick={() => this.handleLanguagesClose('zh')}>Chinese</MenuItem>
+                  <MenuItem onClick={() => this.handleLanguagesClose('en')}>{t('englishLanguage.menuItem')}</MenuItem>
+                  <MenuItem onClick={() => this.handleLanguagesClose('zh')}>{t('chineseLanguage.menuItem')}</MenuItem>
                 </Menu>
               </div>
             </Toolbar>
@@ -125,4 +126,4 @@ ResponsiveDrawer.propTypes = {
   handleLanguageChange: PropTypes.func.isRequired,
 };
 
-export default withStyles(Styles, { withTheme: true })(ResponsiveDrawer);
+export default withStyles(Styles, { withTheme: true })(translate()(ResponsiveDrawer));
