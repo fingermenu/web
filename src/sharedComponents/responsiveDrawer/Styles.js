@@ -48,6 +48,11 @@ const styles = theme => ({
       marginTop: 64,
     },
   },
+  languagesDiv: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
 });
 
 export default styles;

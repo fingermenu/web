@@ -14,7 +14,7 @@
     "@devexpress/dx-react-grid-material-ui": "^1.0.0-beta.2",
     "i18next": "^10.2.1",
     "immutable": "^4.0.0-rc.9",
-    "material-ui": "^1.0.0-beta.19",
+    "material-ui": "^1.0.0-beta.24",
     "material-ui-icons": "^1.0.0-beta.17",
     "micro-business-common-react": "^1.1.1",
     "micro-business-parse-server-common-web": "^1.1.2",
