@@ -8,9 +8,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { translate } from 'react-i18next';
-import { ResponsiveDrawerContainer } from '../responsiveDrawer';
-import { notSignedInStoreMainDrawerListItems, signedInStoreMainDrawerListItems } from '../../app/navigation';
-import Loading from '../loading';
+import { ResponsiveDrawerContainer } from '../../sharedComponents/responsiveDrawer';
+import { notSignedInStoreMainDrawerListItems, signedInStoreMainDrawerListItems } from '../navigation';
+import Loading from '../../sharedComponents/loading';
 
 class ShellContainer extends Component {
   componentWillReceiveProps = nextProps => {

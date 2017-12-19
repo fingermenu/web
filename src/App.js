@@ -15,7 +15,7 @@ import { LinearProgress } from 'material-ui/Progress';
 import Fade from 'material-ui/transitions/Fade';
 import { withStyles } from 'material-ui/styles';
 import withRoot from './sharedComponents/withRoot';
-import { ShellContainer } from './sharedComponents/shell';
+import { ShellContainer } from './app/shell';
 import { SignInContainer, SignUpContainer } from './app/auth';
 import { HomeContainer } from './app/home';
 import Styles from './Styles';
