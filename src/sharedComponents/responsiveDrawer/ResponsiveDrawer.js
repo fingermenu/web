@@ -34,12 +34,13 @@ class ResponsiveDrawer extends Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleLanguagesClose = language => {
+  handleLanguagesClose = () => {
     this.setState({ anchorEl: null });
+  };
 
-    if (language) {
-      this.props.handleLanguageChange(language);
-    }
+  handleLanguagesChange = language => {
+    this.props.handleLanguageChange(language);
+    this.handleLanguagesClose();
   };
 
   render = () => {
@@ -76,8 +77,8 @@ class ResponsiveDrawer extends Component {
                   open={open}
                   onClose={this.handleLanguagesClose}
                 >
-                  <MenuItem onClick={() => this.handleLanguagesClose('en')}>{t('englishLanguage.menuItem')}</MenuItem>
-                  <MenuItem onClick={() => this.handleLanguagesClose('zh')}>{t('chineseLanguage.menuItem')}</MenuItem>
+                  <MenuItem onClick={() => this.handleLanguageChange('en')}>{t('englishLanguage.menuItem')}</MenuItem>
+                  <MenuItem onClick={() => this.handleLanguageChange('zh')}>{t('chineseLanguage.menuItem')}</MenuItem>
                 </Menu>
               </div>
             </Toolbar>
