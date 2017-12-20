@@ -38,7 +38,7 @@ class ResponsiveDrawer extends Component {
     this.setState({ anchorEl: null });
   };
 
-  handleLanguagesChange = language => {
+  handleLanguageChange = language => {
     this.props.handleLanguageChange(language);
     this.handleLanguagesClose();
   };
