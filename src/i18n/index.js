@@ -12,6 +12,7 @@ i18next.init({
       translation: {
         englishLanguage: { menuItem: 'English' },
         chineseLanguage: { menuItem: '中国' },
+        fingerMenu: { title: 'Finger Menu' },
         home: { label: 'Home' },
         homePage: { label: 'Home Page' },
         signUp: { label: 'Sign Up', button: 'Sign Up' },
@@ -27,6 +28,7 @@ i18next.init({
       translation: {
         englishLanguage: { menuItem: 'English' },
         chineseLanguage: { menuItem: '中国' },
+        fingerMenu: { title: '手指菜单' },
         home: { label: '家' },
         homePage: { label: '主页' },
         signUp: { label: '注册', button: '注册' },

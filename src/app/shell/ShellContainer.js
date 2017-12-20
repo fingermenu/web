@@ -24,21 +24,20 @@ class ShellContainer extends Component {
     this.props.userAccessActions.signOut();
   };
 
-  render = () => (
-    <div>
-      <ResponsiveDrawerContainer
-        drawerListItems={
-          this.props.userExists
-            ? signedInStoreMainDrawerListItems(this.props.t, this.handleSignOut)
-            : notSignedInStoreMainDrawerListItems(this.props.t)
-        }
-        appBarTitle="Finger Menu"
-      >
-        {this.props.signOutStatus === UserAccessStatus.IN_PROGRESS && <Loading />}
-        {this.props.shellContent}
-      </ResponsiveDrawerContainer>
-    </div>
-  );
+  render = () => {
+    const { t } = this.props;
+    return (
+      <div>
+        <ResponsiveDrawerContainer
+          drawerListItems={this.props.userExists ? signedInStoreMainDrawerListItems(t, this.handleSignOut) : notSignedInStoreMainDrawerListItems(t)}
+          appBarTitle={t('fingerMenu.title')}
+        >
+          {this.props.signOutStatus === UserAccessStatus.IN_PROGRESS && <Loading />}
+          {this.props.shellContent}
+        </ResponsiveDrawerContainer>
+      </div>
+    );
+  };
 }
 
 ShellContainer.propTypes = {
