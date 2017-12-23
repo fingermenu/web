@@ -1,3 +1,31 @@
+input AddChoiceItemInput {
+  name: String!
+  description: String!
+  choiceItemPageUrl: String
+  imageUrl: String
+  clientMutationId: String
+}
+
+type AddChoiceItemPayload {
+  errorMessage: String
+  choiceItem: ChoiceItemTypeEdge
+  clientMutationId: String
+}
+
+input AddMenuItemInput {
+  name: String!
+  description: String!
+  menuItemPageUrl: String
+  imageUrl: String
+  clientMutationId: String
+}
+
+type AddMenuItemPayload {
+  errorMessage: String
+  menuItem: MenuItemTypeEdge
+  clientMutationId: String
+}
+
 input AddRestaurantInput {
   name: String!
   websiteUrl: String
@@ -11,8 +39,34 @@ input AddRestaurantInput {
 
 type AddRestaurantPayload {
   errorMessage: String
-  restaurant: OwnedRestaurantTypeEdge
+  restaurant: RestaurantTypeEdge
   clientMutationId: String
+}
+
+type ChoiceItem implements Node {
+  id: ID!
+  name: String
+  description: String
+  menuItemPageUrl: String
+  imageUrl: String
+}
+
+"""A connection to a list of items."""
+type ChoiceItemTypeConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ChoiceItemTypeEdge]
+}
+
+"""An edge in a connection."""
+type ChoiceItemTypeEdge {
+  """The item at the end of the edge"""
+  node: ChoiceItem
+
+  """A cursor for use in pagination"""
+  cursor: String!
 }
 
 type GeoLocation {
@@ -20,64 +74,60 @@ type GeoLocation {
   longitude: Float
 }
 
-type Mutation {
-  addRestaurant(input: AddRestaurantInput!): AddRestaurantPayload
-}
-
-# An object with an ID
-interface Node {
-  # The id of the object.
-  id: ID!
-}
-
-type OwnedRestaurant implements Node {
+type MenuItem implements Node {
   id: ID!
   name: String
-  websiteUrl: String
+  description: String
+  menuItemPageUrl: String
   imageUrl: String
-  address: String
-  geoLocation: GeoLocation
-  phones: [Phone!]
-  status: String
-  googleMapUrl: String
-  inheritParentRestaurantMenus: Boolean
-  parentRestaurant: ParentOwnedRestaurant
 }
 
-# A connection to a list of items.
-type OwnedRestaurantTypeConnection {
-  # Information to aid in pagination.
+"""A connection to a list of items."""
+type MenuItemTypeConnection {
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
 
-  # A list of edges.
-  edges: [OwnedRestaurantTypeEdge]
+  """A list of edges."""
+  edges: [MenuItemTypeEdge]
 }
 
-# An edge in a connection.
-type OwnedRestaurantTypeEdge {
-  # The item at the end of the edge
-  node: OwnedRestaurant
+"""An edge in a connection."""
+type MenuItemTypeEdge {
+  """The item at the end of the edge"""
+  node: MenuItem
 
-  # A cursor for use in pagination
+  """A cursor for use in pagination"""
   cursor: String!
 }
 
-# Information about pagination in a connection.
+type Mutation {
+  addChoiceItem(input: AddChoiceItemInput!): AddChoiceItemPayload
+  addMenuItem(input: AddMenuItemInput!): AddMenuItemPayload
+  addRestaurant(input: AddRestaurantInput!): AddRestaurantPayload
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
 type PageInfo {
-  # When paginating forwards, are there more items?
+  """When paginating forwards, are there more items?"""
   hasNextPage: Boolean!
 
-  # When paginating backwards, are there more items?
+  """When paginating backwards, are there more items?"""
   hasPreviousPage: Boolean!
 
-  # When paginating backwards, the cursor to continue.
+  """When paginating backwards, the cursor to continue."""
   startCursor: String
 
-  # When paginating forwards, the cursor to continue.
+  """When paginating forwards, the cursor to continue."""
   endCursor: String
 }
 
-type ParentOwnedRestaurant implements Node {
+type ParentRestaurant implements Node {
   id: ID!
   name: String
   websiteUrl: String
@@ -99,16 +149,50 @@ type Query {
   user: User
   viewer: Viewer
 
-  # Fetches an object given its ID
+  """Fetches an object given its ID"""
   node(
-    # The ID of an object
+    """The ID of an object"""
     id: ID!
   ): Node
 }
 
+type Restaurant implements Node {
+  id: ID!
+  name: String
+  websiteUrl: String
+  imageUrl: String
+  address: String
+  geoLocation: GeoLocation
+  phones: [Phone!]
+  status: String
+  googleMapUrl: String
+  inheritParentRestaurantMenus: Boolean
+  parentRestaurant: ParentRestaurant
+}
+
+"""A connection to a list of items."""
+type RestaurantTypeConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [RestaurantTypeEdge]
+}
+
+"""An edge in a connection."""
+type RestaurantTypeEdge {
+  """The item at the end of the edge"""
+  node: Restaurant
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
 type User implements Node {
   id: ID!
-  ownedRestaurants(after: String, first: Int, before: String, last: Int, ownedRestaurantIds: [ID!], name: String, status: Boolean, inheritParentRestaurantMenus: Boolean, sortOption: String): OwnedRestaurantTypeConnection
+  choiceItems(after: String, first: Int, before: String, last: Int, choiceItemIds: [ID!], name: String, description: String, sortOption: String): ChoiceItemTypeConnection
+  menuItems(after: String, first: Int, before: String, last: Int, menuItemIds: [ID!], name: String, description: String, sortOption: String): MenuItemTypeConnection
+  restaurants(after: String, first: Int, before: String, last: Int, restaurantIds: [ID!], name: String, status: Boolean, inheritParentRestaurantMenus: Boolean, sortOption: String): RestaurantTypeConnection
 }
 
 type Viewer implements Node {
