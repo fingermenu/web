@@ -1,9 +1,9 @@
 // @flow
 
+import { UserAccessReducer } from '@microbusiness/common-react';
+import { AppUpdaterReducer, MessageBarReducer } from '@microbusiness/common-react';
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { UserAccessReducer } from 'micro-business-common-react';
-import { AppUpdaterReducer, MessageBarReducer } from 'micro-business-common-react';
 import { LocalStateReducer } from '../localState';
 
 export default function getReducers() {

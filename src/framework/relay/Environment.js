@@ -1,7 +1,7 @@
 // @flow
 
+import { UserService } from '@microbusiness/parse-server-common-web';
 import Immutable from 'immutable';
-import { UserService } from 'micro-business-parse-server-common-web';
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 import Config from '../config';
 

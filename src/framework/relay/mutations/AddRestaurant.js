@@ -1,10 +1,10 @@
 // @flow
 
+import { MessageType } from '@microbusiness/common-react';
+import * as messageBarActions from '@microbusiness/common-react/dist/messageBar/Actions';
 import { commitMutation, graphql } from 'react-relay';
 import { ConnectionHandler } from 'relay-runtime';
 import uuid from 'uuid/v4';
-import { MessageType } from 'micro-business-common-react';
-import * as messageBarActions from 'micro-business-common-react/dist/messageBar/Actions';
 import { reduxStore } from '../../redux';
 
 const mutation = graphql`

@@ -1,10 +1,10 @@
 // @flow
 
+import * as userAccessActions from '@microbusiness/common-react/dist/userAccess/Actions';
+import { UserAccessStatus } from '@microbusiness/common-react';
+import { MessageType } from '@microbusiness/common-react';
+import * as messageBarActions from '@microbusiness/common-react/dist/messageBar/Actions';
 import Immutable, { Map } from 'immutable';
-import * as userAccessActions from 'micro-business-common-react/dist/userAccess/Actions';
-import { UserAccessStatus } from 'micro-business-common-react';
-import { MessageType } from 'micro-business-common-react';
-import * as messageBarActions from 'micro-business-common-react/dist/messageBar/Actions';
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';

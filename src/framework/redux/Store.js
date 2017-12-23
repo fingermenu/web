@@ -5,7 +5,7 @@ import {
   watchSignUpWithUsernameAndPassword,
   watchSignInWithUsernameAndPassword,
   watchSignOut,
-} from 'micro-business-parse-server-common-web';
+} from '@microbusiness/parse-server-common-web';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import getReducers from './Reducers';
