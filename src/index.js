@@ -1,8 +1,8 @@
 // @flow
 
-import { configParseServerSdk } from '@microbusiness/parse-server-common-web';
 import 'regenerator-runtime/runtime';
 import 'typeface-roboto';
+import { configParseServerSdk } from '@microbusiness/parse-server-common-web';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { reduxStore } from './framework/redux';
