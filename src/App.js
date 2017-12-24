@@ -18,6 +18,7 @@ import withRoot from './sharedComponents/withRoot';
 import { ShellContainer } from './app/shell';
 import { SignInContainer, SignUpContainer } from './app/auth';
 import { HomeContainer } from './app/home';
+import { MenuItems } from './app/menuItems';
 import Styles from './Styles';
 import './App.css';
 
@@ -77,6 +78,7 @@ class App extends Component {
           <Route path="/signin" component={SignInContainer} exact />
           <Route path="/signup" component={SignUpContainer} exact />
           <Route path="/" exact render={props => <ShellContainer {...props} shellContent={<HomeContainer />} />} />
+          <Route path="/myMenuItems" exact render={props => <ShellContainer {...props} shellContent={<MenuItems />} />} />
           <Snackbar
             open={snackbar.open}
             onRequestClose={this.handleRequestCloseSnackbar}

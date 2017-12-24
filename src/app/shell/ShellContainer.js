@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { translate } from 'react-i18next';
 import { ResponsiveDrawerContainer } from '../../sharedComponents/responsiveDrawer';
-import { notSignedInStoreMainDrawerListItems, signedInStoreMainDrawerListItems } from '../navigation';
+import { notSignedInMenuItemMainDrawerListItems, signedInMenuItemMainDrawerListItems } from '../navigation';
 import Loading from '../../sharedComponents/loading';
 
 class ShellContainer extends Component {
@@ -29,7 +29,9 @@ class ShellContainer extends Component {
     return (
       <div>
         <ResponsiveDrawerContainer
-          drawerListItems={this.props.userExists ? signedInStoreMainDrawerListItems(t, this.handleSignOut) : notSignedInStoreMainDrawerListItems(t)}
+          drawerListItems={
+            this.props.userExists ? signedInMenuItemMainDrawerListItems(t, this.handleSignOut) : notSignedInMenuItemMainDrawerListItems(t)
+          }
           appBarTitle={t('fingerMenu.title')}
         >
           {this.props.signOutStatus === UserAccessStatus.IN_PROGRESS && <Loading />}

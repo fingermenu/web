@@ -2,9 +2,9 @@
 
 import { MessageType } from '@microbusiness/common-react';
 import * as messageBarActions from '@microbusiness/common-react/dist/messageBar/Actions';
+import cuid from 'cuid';
 import { commitMutation, graphql } from 'react-relay';
 import { ConnectionHandler } from 'relay-runtime';
-import uuid from 'uuid/v4';
 import { reduxStore } from '../../redux';
 
 const mutation = graphql`
@@ -57,7 +57,7 @@ const commit = (environment, userId, name, address) => {
       }
     },
     optimisticUpdater: restaurant => {
-      const id = uuid();
+      const id = cuid();
       const node = restaurant.create(id, 'item');
 
       node.setValue(true, 'savingInProgress');
@@ -65,7 +65,7 @@ const commit = (environment, userId, name, address) => {
       node.setValue(name, 'name');
       node.setValue(name, 'address');
 
-      const restaurantEdge = restaurant.create(uuid(), 'RestaurantEdge');
+      const restaurantEdge = restaurant.create(cuid(), 'RestaurantEdge');
 
       restaurantEdge.setLinkedRecord(node, 'node');
       /* sharedUpdater(restaurant, userId, restaurantEdge);*/
